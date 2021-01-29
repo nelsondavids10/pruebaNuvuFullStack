@@ -1,0 +1,9 @@
+com\api\controller\ClienteController.class
+com\api\service\ClienteServiceImpl.class
+com\api\config\WebConfig.class
+com\api\dao\ClienteDAO.class
+com\api\dao\ClienteDAOImpl.class
+com\api\service\ClienteService.class
+com\api\model\Cliente.class
+com\api\config\MyWebAppInitializer.class
+com\api\config\AppConfig.class
