@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,19 +13,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.model.Tarjeta;
-import com.api.service.TarjetaService;
+import com.api.model.Cliente;
+import com.api.service.ClienteService;
 
 @RestController
-public class TarjetaController {
+public class ClienteController {
 	
 	@Autowired
-	private TarjetaService tarjetaService;
+	private ClienteService clienteService;
 	
-	@GetMapping("/api/getAllTarjetas")	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/api/getAllClientes")	
 	public ResponseEntity<?> getAll(){
 		try {
-			List<Tarjeta> lista = tarjetaService.list();
+			List<Cliente> lista = clienteService.list();
 			return ResponseEntity.ok().body(lista);
 		}
 		catch(Exception e) {
@@ -32,10 +34,11 @@ public class TarjetaController {
 		}		
 	}
 	
-	@PostMapping("/api/tarjeta")	
-	public ResponseEntity<?> save(@RequestBody Tarjeta tarjeta){
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/api/cliente")	
+	public ResponseEntity<?> save(@RequestBody Cliente cliente){
         try {
-        	long id = tarjetaService.save(tarjeta);
+        	long id = clienteService.save(cliente);
     		return ResponseEntity.ok().body("Inserción Correcta, id:"+id);
 		}
 		catch(Exception e) {
@@ -43,21 +46,23 @@ public class TarjetaController {
 		}		
 	}
 	
-	@GetMapping("/api/tarjeta/{id}")	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/api/cliente/{id}")	
 	public ResponseEntity<?> get(@PathVariable("id") long id){
         try {
-        	Tarjeta tarjeta = tarjetaService.get(id);
-    		return ResponseEntity.ok().body(tarjeta);
+        	Cliente cliente = clienteService.get(id);
+    		return ResponseEntity.ok().body(cliente);
 		}
 		catch(Exception e) {
 			return ResponseEntity.ok().body("Error: " + e.getMessage());
 		}		
 	}
 	
-	@PutMapping("/api/tarjeta/{id}")	
-	public ResponseEntity<?> update(@RequestBody Tarjeta tarjeta, @PathVariable("id") long id){
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PutMapping("/api/cliente/{id}")	
+	public ResponseEntity<?> update(@RequestBody Cliente cliente, @PathVariable("id") long id){
         try {
-        	tarjetaService.update(id,tarjeta);
+        	clienteService.update(id,cliente);
     		return ResponseEntity.ok().body("Actualización Correcta");
 		}
 		catch(Exception e) {
@@ -65,10 +70,11 @@ public class TarjetaController {
 		}		
 	}
 	
-	@DeleteMapping("/api/tarjeta/{id}")	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@DeleteMapping("/api/cliente/{id}")	
 	public ResponseEntity<?> delete(@PathVariable("id") long id){
         try {
-        	tarjetaService.detele(id);
+        	clienteService.detele(id);
     		return ResponseEntity.ok().body("Eliminación exitosa");
 		}
 		catch(Exception e) {

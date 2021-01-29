@@ -1,0 +1,103 @@
+<div class="col-md-12 mt-3 pt-3 pb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <h5>PRUEBA TÉCNICA NUVU</h5>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12  pb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="clienteForm">
+                <div class="form-group">
+                    <input formControlName="edita" type="hidden" [(ngModel)]="editar" />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="exampleInputUserId1">Número de Identificación</label>
+                            <input [(ngModel)]="ClienteUpd.identificacion" type="number" class="form-control"
+                                formControlName="userId" placeholder="Ingresa tu Número de identificación"
+                                aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">Ej. 123456789</small>
+                            <small *ngIf="clienteForm.hasError('required', ['userId'])">El número de identificación es
+                                requerido</small>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="exampleInputUserId1">Género</label>
+                            <select aria-describedby="emailHelp" class="form-control" formControlName="typeId">
+                                <option value="F">Femenino</option>
+                                <option value="M">Masculino</option>
+                            </select>
+                            <small id="emailHelp" class="form-text text-muted">Ej. Femenino</small>
+                            <small *ngIf="clienteForm.hasError('required', ['typeId'])">El género es
+                                requerido</small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="exampleInputUserId1">Nombres</label>
+                            <input [(ngModel)]="ClienteUpd.nombres" type="text" class="form-control"
+                                formControlName="name" placeholder="Ingresa tus nombres" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">Ej. Nelson</small>
+                            <small *ngIf="clienteForm.hasError('required', ['name'])">Los nombres son requeridos</small>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="exampleInputUserId1">Apellidos</label>
+                            <input [(ngModel)]="ClienteUpd.apellidos" type="text" class="form-control"
+                                formControlName="surname" placeholder="Ingresa tus apellidos"
+                                aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">Ej. Santacruz</small>
+                            <small *ngIf="clienteForm.hasError('required', ['surname'])">Los apellidos son
+                                requeridos</small>
+                        </div>
+                        <div class="col-md-4">
+                            <br><br>
+                            <button type="submit" class="form-control" class="btn btn-primary"
+                                (click)="Guardar()">Guardar</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <p *ngIf="ValidaUsuario>1">Datos Incorrectos</p>
+                <br>
+
+            </form>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-md-12">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Identificación</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Género</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of Lista">
+                        <td>{{item.id}}</td>
+                        <td>{{item.identificacion}}</td>
+                        <td>{{item.nombres}}</td>
+                        <td>{{item.apellidos}}</td>
+                        <td>{{item.genero}}</td>
+                        <td>
+                            <button class="fa fa-trash" (click)="Eliminar(item.id)"></button>&nbsp;
+                            <button class="fa fa-edit" (click)="Buscar(item.id)"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br><br>
+
+
+</div>

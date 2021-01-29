@@ -1,0 +1,47 @@
+<!-- <div class="loadWrapper" *ngIf="loading">
+    <div class="loaderGif"></div>
+</div>
+<app-header></app-header>
+<app-sidebar (collapsedEvent)="receiveCollapsed($event)"></app-sidebar>
+<section class="main-container" [ngClass]="{collapsed: collapedSideBar}">
+    <router-outlet></router-outlet>
+    <div class="embebida" *ngIf="viewNotification">
+        <button class="close" type="button" (click)="featureHide()">x</button>
+        <div>
+                <div class="notifTitle">{{titleNotification}}</div>
+                <div class="notifMesagge">{{messageNotification}}</div>
+        </div>
+    </div>
+</section> -->
+
+<div class="row align-items-start colordivEnc m-0">
+    <div class="col">
+      <img src="../../assets/images/logo.png" height="60" />
+    </div>
+  
+    <div class="col d-flex justify-content-end pt-1 mt-2">
+      <div class="row">
+        <ul class="nav justify-content-end" style="color: white">
+            <li class="nav-item" *ngIf="false">
+              <a class="nav-link" href="javascript:void(0)" (click)="true">Iniciar</a>
+            </li>
+            <li class="nav-item mr-4">
+              <!-- <a class="nav-link" href="javascript:void(0)" (click)="openWindowCustomClass(content)">Registrar</a> -->
+              <input type="button" class="form-control botonIngresar" (click)="logOut()" style=""
+                value="Cerrar Sesión" id="registro">
+            </li>
+  
+        </ul>
+        <!-- <a href="javascript:void(0)" class="mr-2" style="color: white">Iniciar</a>
+        <span class="" style="color: white">|</span>
+        <a href="javascript:void(0)" class="ml-2" style="color: white" (click)="openWindowCustomClass(content)">Registrar</a> -->
+      </div>
+    </div>
+  
+  </div>
+
+
+
+<div class="col-md-12">
+    <router-outlet></router-outlet>
+</div>

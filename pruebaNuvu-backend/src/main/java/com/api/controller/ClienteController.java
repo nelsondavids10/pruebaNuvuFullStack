@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/api/getAllClientes")	
 	public ResponseEntity<?> getAll(){
 		try {
@@ -32,6 +34,7 @@ public class ClienteController {
 		}		
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/api/cliente")	
 	public ResponseEntity<?> save(@RequestBody Cliente cliente){
         try {
@@ -43,6 +46,7 @@ public class ClienteController {
 		}		
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/api/cliente/{id}")	
 	public ResponseEntity<?> get(@PathVariable("id") long id){
         try {
@@ -54,6 +58,7 @@ public class ClienteController {
 		}		
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/api/cliente/{id}")	
 	public ResponseEntity<?> update(@RequestBody Cliente cliente, @PathVariable("id") long id){
         try {
@@ -65,6 +70,7 @@ public class ClienteController {
 		}		
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("/api/cliente/{id}")	
 	public ResponseEntity<?> delete(@PathVariable("id") long id){
         try {
